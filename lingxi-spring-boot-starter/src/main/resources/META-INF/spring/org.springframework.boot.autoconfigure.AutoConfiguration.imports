@@ -1,0 +1,4 @@
+io.github.lingxi.autoconfigure.LingxiAutoConfiguration
+io.github.lingxi.autoconfigure.LingxiSecurityAutoConfiguration
+io.github.lingxi.autoconfigure.LingxiSecurityDisabledAutoConfiguration
+io.github.lingxi.autoconfigure.LingxiMiddlewareAutoConfiguration

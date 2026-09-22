@@ -1,0 +1,38 @@
+name: Bug report
+description: 报告可复现的 Lingxi 缺陷
+title: "[Bug] "
+labels: ["bug"]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: 问题描述
+      description: 请说明实际行为和预期行为。
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Lingxi 版本
+      placeholder: 0.1.0-SNAPSHOT
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: 环境
+      placeholder: JDK、Spring Boot、操作系统
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: 复现步骤
+      description: 请提供最小示例、配置和完整步骤，删除其中的敏感信息。
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: 相关日志
+      render: shell

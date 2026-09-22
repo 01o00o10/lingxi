@@ -1,0 +1,17 @@
+server:
+  port: 8081
+spring:
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+lingxi:
+  enabled: true
+  base-package: io.github.lingxi.sample
+  prefix: /api
+  auth:
+    enabled: false
+  diagnostics:
+    log-on-startup: true
+    endpoint-enabled: true
+    path: /lingxi/diagnostics
