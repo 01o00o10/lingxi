@@ -8,6 +8,8 @@ target/
 *.swp
 *.swo
 .env
+.github/
+.kilo/
 docs/
 .env.*
 !.env.example
