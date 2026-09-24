@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0">
     <modelVersion>4.0.0</modelVersion>
-    <parent><groupId>io.github.lingxi</groupId><artifactId>lingxi-parent</artifactId><version>0.1.0-SNAPSHOT</version></parent>
+    <parent><groupId>io.github.o1o00o10</groupId><artifactId>lingxi-parent</artifactId><version>0.1.0-SNAPSHOT</version></parent>
     <artifactId>lingxi-core</artifactId>
     <dependencies>
         <dependency><groupId>org.springframework</groupId><artifactId>spring-web</artifactId></dependency>

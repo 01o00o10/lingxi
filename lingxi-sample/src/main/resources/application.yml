@@ -7,7 +7,7 @@ spring:
       max-request-size: 10MB
 lingxi:
   enabled: true
-  base-package: io.github.lingxi.sample
+  base-package: io.github.o1o00o10.sample
   prefix: /api
   enforce-api-only: true
   auth:

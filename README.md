@@ -60,7 +60,7 @@ Lingxi 是面向 Java 8 与 Spring Boot 2.7 的接口优先 API Starter。业务
 
 ```xml
 <dependency>
-    <groupId>io.github.lingxi</groupId>
+    <groupId>io.github.o1o00o10</groupId>
     <artifactId>lingxi-spring-boot-starter</artifactId>
     <version>0.1.0-SNAPSHOT</version>
 </dependency>

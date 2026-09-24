@@ -60,7 +60,7 @@ Lingxi is not on Maven Central yet. Run `mvn clean install`, then add:
 
 ```xml
 <dependency>
-    <groupId>io.github.lingxi</groupId>
+    <groupId>io.github.o1o00o10</groupId>
     <artifactId>lingxi-spring-boot-starter</artifactId>
     <version>0.1.0-SNAPSHOT</version>
 </dependency>

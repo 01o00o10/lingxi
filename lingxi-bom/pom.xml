@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0">
     <modelVersion>4.0.0</modelVersion>
-    <parent><groupId>io.github.lingxi</groupId><artifactId>lingxi-parent</artifactId><version>0.1.0-SNAPSHOT</version></parent>
+    <parent><groupId>io.github.o1o00o10</groupId><artifactId>lingxi-parent</artifactId><version>0.1.0-SNAPSHOT</version></parent>
     <artifactId>lingxi-bom</artifactId><packaging>pom</packaging>
     <dependencyManagement><dependencies>
-        <dependency><groupId>io.github.lingxi</groupId><artifactId>lingxi-core</artifactId><version>${project.version}</version></dependency>
-        <dependency><groupId>io.github.lingxi</groupId><artifactId>lingxi-web</artifactId><version>${project.version}</version></dependency>
-        <dependency><groupId>io.github.lingxi</groupId><artifactId>lingxi-security</artifactId><version>${project.version}</version></dependency>
-        <dependency><groupId>io.github.lingxi</groupId><artifactId>lingxi-middleware</artifactId><version>${project.version}</version></dependency>
-        <dependency><groupId>io.github.lingxi</groupId><artifactId>lingxi-spring-boot-starter</artifactId><version>${project.version}</version></dependency>
+        <dependency><groupId>io.github.o1o00o10</groupId><artifactId>lingxi-core</artifactId><version>${project.version}</version></dependency>
+        <dependency><groupId>io.github.o1o00o10</groupId><artifactId>lingxi-web</artifactId><version>${project.version}</version></dependency>
+        <dependency><groupId>io.github.o1o00o10</groupId><artifactId>lingxi-security</artifactId><version>${project.version}</version></dependency>
+        <dependency><groupId>io.github.o1o00o10</groupId><artifactId>lingxi-middleware</artifactId><version>${project.version}</version></dependency>
+        <dependency><groupId>io.github.o1o00o10</groupId><artifactId>lingxi-spring-boot-starter</artifactId><version>${project.version}</version></dependency>
     </dependencies></dependencyManagement>
 </project>
