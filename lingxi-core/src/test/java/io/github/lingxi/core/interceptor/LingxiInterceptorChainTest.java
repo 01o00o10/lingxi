@@ -82,6 +82,51 @@ class LingxiInterceptorChainTest {
     assertThat(events).containsExactly("error:failed", "done");
   }
 
+  @Test
+  void runsOnlyTheConfiguredLifecycleStage() {
+    List<String> events = new ArrayList<String>();
+    LingxiHandlerInterceptor pre = staged(LingxiInterceptorStage.BEFORE_SERVICE, "pre", events);
+    LingxiHandlerInterceptor post = staged(LingxiInterceptorStage.AFTER_SERVICE, "post", events);
+    LingxiHandlerInterceptor error = staged(LingxiInterceptorStage.ON_EXCEPTION, "error", events);
+    LingxiHandlerInterceptor completion =
+        staged(LingxiInterceptorStage.AFTER_COMPLETION, "complete", events);
+    LingxiInterceptorChain chain =
+        new LingxiInterceptorChain(Arrays.asList(pre, post, error, completion));
+    LingxiTradeContext context = new LingxiTradeContext();
+
+    assertThat(chain.preHandle(context, this)).isTrue();
+    chain.postHandle(context, this, "ok");
+    chain.complete(context, this, new IllegalStateException("failed"));
+
+    assertThat(events).containsExactly("pre:pre", "post:post", "error:error", "done:complete");
+  }
+
+  private LingxiHandlerInterceptor staged(
+      final LingxiInterceptorStage stage, final String name, final List<String> events) {
+    return new LingxiHandlerInterceptor() {
+      public boolean preHandle(LingxiTradeContext c, Object h) {
+        events.add("pre:" + name);
+        return true;
+      }
+
+      public void postHandle(LingxiTradeContext c, Object h, Object r) {
+        events.add("post:" + name);
+      }
+
+      public void onException(LingxiTradeContext c, Object h, Exception e) {
+        events.add("error:" + name);
+      }
+
+      public void afterCompletion(LingxiTradeContext c, Object h, Exception e) {
+        events.add("done:" + name);
+      }
+
+      public LingxiInterceptorStage stage() {
+        return stage;
+      }
+    };
+  }
+
   private LingxiHandlerInterceptor interceptor(
       final int order, final String name, final List<String> events) {
     return new LingxiHandlerInterceptor() {

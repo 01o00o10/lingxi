@@ -6,6 +6,7 @@
 
 ### Added
 
+- Configurable interceptor lifecycle stages with backward-compatible `ALL` behavior.
 - 基于接口方法 `@LingxiApi` 的 Spring MVC 动态路由。
 - 统一上下文、响应包装、异常映射和可扩展拦截器链。
 - CompletableFuture、Callable、DeferredResult、WebAsyncTask 和 SSE 支持。

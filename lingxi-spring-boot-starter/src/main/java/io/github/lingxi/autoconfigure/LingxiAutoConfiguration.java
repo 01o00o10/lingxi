@@ -93,6 +93,13 @@ public class LingxiAutoConfiguration {
   }
 
   @Bean
+  @ConditionalOnProperty(prefix = "lingxi", name = "enforce-api-only", havingValue = "true")
+  public LingxiNativeMvcGuard lingxiNativeMvcGuard(
+      ApplicationContext context, LingxiProperties properties) {
+    return new LingxiNativeMvcGuard(context, properties.getBasePackage());
+  }
+
+  @Bean
   @ConditionalOnMissingBean
   public LingxiWebInterceptor lingxiWebInterceptor(
       ApplicationContext context,

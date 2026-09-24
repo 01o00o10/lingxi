@@ -38,6 +38,7 @@ Lingxi is not currently intended for:
 - Path, query, header, cookie, body, multipart, and `@LingxiParam` binding
 - Unified response envelopes, error codes, and HTTP status mapping
 - Ordered interceptors and replaceable sequence, response, and trade-code SPIs
+- Interceptor lifecycle stages: `BEFORE_SERVICE`, `AFTER_SERVICE`, `ON_EXCEPTION`, and `AFTER_COMPLETION`
 - CompletableFuture, Callable, DeferredResult, WebAsyncTask, and SSE support
 - Optional JWT login, authentication filter, and role/authority checks
 - Optional Redis-backed idempotency
@@ -95,6 +96,7 @@ lingxi:
   enabled: true
   base-package: com.example.application
   prefix: /api
+  enforce-api-only: true
 ```
 
 ## Sample and Verification
@@ -126,6 +128,7 @@ See the [documentation index](docs/README.md), [configuration reference](docs/co
 - The diagnostics endpoint is disabled by default. Restrict access if enabled.
 - Backward compatibility is not guaranteed before `1.0.0`.
 - Perform security, capacity, and dependency compliance reviews before production use.
+- With `lingxi.enforce-api-only=true`, native Spring MVC controllers and mapping annotations in business packages are rejected during startup.
 
 ## Contributing
 

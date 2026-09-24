@@ -9,6 +9,7 @@ lingxi:
   enabled: true
   base-package: io.github.lingxi.sample
   prefix: /api
+  enforce-api-only: true
   auth:
     enabled: false
   diagnostics:

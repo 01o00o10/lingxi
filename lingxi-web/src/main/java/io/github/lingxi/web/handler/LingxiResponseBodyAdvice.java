@@ -52,20 +52,22 @@ public class LingxiResponseBodyAdvice implements ResponseBodyAdvice<Object> {
       Class<? extends HttpMessageConverter<?>> selectedConverterType,
       ServerHttpRequest request,
       ServerHttpResponse response) {
+    HttpServletRequest servletRequest = ((ServletServerHttpRequest) request).getServletRequest();
+    LingxiTradeContext context =
+        (LingxiTradeContext) servletRequest.getAttribute(LingxiContextHolder.REQUEST_ATTRIBUTE);
+    LingxiInterceptorChain chain =
+        (LingxiInterceptorChain) servletRequest.getAttribute(LingxiWebInterceptor.CHAIN_ATTRIBUTE);
+    // This callback represents the Service boundary, so it must run before checking response
+    // wrapping. Raw, already-wrapped, SSE, and streaming responses are still valid Service results.
+    if (chain != null) chain.postHandle(context, returnType, body);
     if (body instanceof LingxiResponse
         || body instanceof ResponseBodyEmitter
         || body instanceof SseEmitter
         || body instanceof StreamingResponseBody) return body;
-    HttpServletRequest servletRequest = ((ServletServerHttpRequest) request).getServletRequest();
     LingxiApi api = (LingxiApi) servletRequest.getAttribute(LingxiWebInterceptor.API_ATTRIBUTE);
     if (api == null || !api.wrapResponse()) return body;
-    LingxiTradeContext context =
-        (LingxiTradeContext) servletRequest.getAttribute(LingxiContextHolder.REQUEST_ATTRIBUTE);
     if (context != null && context.getRespSeqNo() == null)
       context.setRespSeqNo("RESP" + System.currentTimeMillis());
-    LingxiInterceptorChain chain =
-        (LingxiInterceptorChain) servletRequest.getAttribute(LingxiWebInterceptor.CHAIN_ATTRIBUTE);
-    if (chain != null) chain.postHandle(context, returnType, body);
     Object wrapped = wrapper.wrap(body, context);
     if (StringHttpMessageConverter.class.isAssignableFrom(selectedConverterType)) {
       // StringHttpMessageConverter accepts only String. Serialize the envelope explicitly or MVC

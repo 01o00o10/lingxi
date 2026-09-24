@@ -38,6 +38,7 @@ Lingxi 是面向 Java 8 与 Spring Boot 2.7 的接口优先 API Starter。业务
 - Path、Query、Header、Cookie、Body、Multipart 和 `@LingxiParam` 参数绑定
 - 统一响应包装、错误码与 HTTP 状态码映射
 - 有序拦截器链和可替换的流水号、响应包装、交易码校验 SPI
+- 支持按 `BEFORE_SERVICE`、`AFTER_SERVICE`、`ON_EXCEPTION`、`AFTER_COMPLETION` 自定义拦截阶段
 - CompletableFuture、Callable、DeferredResult、WebAsyncTask 和 SSE
 - 可选 JWT 登录、认证过滤器及角色/权限控制
 - 可选 Redis 幂等能力
@@ -95,6 +96,7 @@ lingxi:
   enabled: true
   base-package: com.example.application
   prefix: /api
+  enforce-api-only: true
 ```
 
 完整配置见 [配置参考](docs/configuration.md)，设计原理见 [架构设计](docs/architecture.md)。
@@ -128,6 +130,7 @@ curl http://localhost:8081/lingxi/diagnostics
 - 诊断端点默认关闭；开放时应通过网关或安全策略限制访问。
 - `1.0.0` 前不默认承诺 API 向后兼容。
 - 上生产前应完成组织内部的安全、容量和依赖合规评估。
+- 开启 `lingxi.enforce-api-only` 后，业务包中的原生 Spring MVC Controller 或映射注解会在启动时被拒绝。
 
 ## 参与贡献
 

@@ -3,6 +3,7 @@
 
 package io.github.lingxi.core.annotation;
 
+import io.github.lingxi.core.interceptor.LingxiInterceptorStage;
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -20,4 +21,6 @@ public @interface LingxiInterceptor {
   String value() default "";
 
   int order() default 0;
+
+  LingxiInterceptorStage stage() default LingxiInterceptorStage.ALL;
 }

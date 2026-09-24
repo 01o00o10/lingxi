@@ -20,6 +20,10 @@ public interface LingxiHandlerInterceptor {
     return true;
   }
 
+  default LingxiInterceptorStage stage() {
+    return LingxiInterceptorStage.ALL;
+  }
+
   default int order() {
     return 0;
   }

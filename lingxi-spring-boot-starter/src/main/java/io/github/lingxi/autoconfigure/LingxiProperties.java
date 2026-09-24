@@ -12,6 +12,7 @@ import org.springframework.util.unit.DataSize;
 @ConfigurationProperties(prefix = "lingxi")
 public class LingxiProperties {
   private boolean enabled = true;
+  private boolean enforceApiOnly;
   private String[] basePackage = new String[0];
   private String prefix = "/api";
   private final Response response = new Response();
@@ -28,6 +29,14 @@ public class LingxiProperties {
 
   public void setEnabled(boolean v) {
     enabled = v;
+  }
+
+  public boolean isEnforceApiOnly() {
+    return enforceApiOnly;
+  }
+
+  public void setEnforceApiOnly(boolean v) {
+    enforceApiOnly = v;
   }
 
   public String[] getBasePackage() {
